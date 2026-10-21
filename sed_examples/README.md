@@ -31,3 +31,32 @@ These CSV files are variations of a sales dataset and are useful for experimenti
 ## Key idea
 
 `sed` is ideal for quick text manipulation in pipelines, especially when working with files that resemble reports or CSV records.
+
+## Example commands
+
+Run these commands from this folder. They print transformed or selected data
+without changing the source CSV files.
+
+Print the header and the first five sales:
+
+```bash
+sed -n '1,6p' sales.csv
+```
+
+Print rows for India from `IndiaSales.csv`:
+
+```bash
+sed -n '/,India,/p' IndiaSales.csv
+```
+
+Replace the country value `Libya` with `UAE` in the output:
+
+```bash
+sed 's/,Libya,/,UAE,/' sales.csv | head -n 5
+```
+
+Remove the two non-CSV note lines from `IndiaSales.csv`:
+
+```bash
+sed '/^This is the end/d' IndiaSales.csv
+```
